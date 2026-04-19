@@ -41,18 +41,6 @@ The 9 cells are numbered like this:
 
 ---
 
-## Quickstart — interactive notebook
-
-If you prefer to follow along step-by-step in a notebook rather than running scripts manually:
-
-```bash
-uv run jupyter lab walkthrough.ipynb
-```
-
-The notebook walks through every step (annotation verification → augmentation → training → evaluation) with inline explanations and output previews.
-
----
-
 ## First-time setup
 
 ### Requirements
@@ -63,6 +51,20 @@ The notebook walks through every step (annotation verification → augmentation 
 
 ```bash
 uv sync
+```
+
+---
+
+## Quick start — skip training
+
+If you don't want to train the model yourself, download the pre-trained weights from Google Drive:
+
+**[Download best.pt](https://drive.google.com/file/d/1IgDuacHHGZzuF_43mvtDdCblUHWHnUPa/view?usp=drive_link)**
+
+Place the downloaded file in the **project root** as `best.pt`, then open the notebook:
+
+```bash
+uv run jupyter lab walkthrough.ipynb
 ```
 
 ---
