@@ -1,0 +1,9 @@
+.venv/
+dataset/
+runs/
+annotation_preview/
+eval_viz/
+calibration_check.png
+__pycache__/
+*.pyc
+*.pt
