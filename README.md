@@ -2,6 +2,8 @@
 
 Detects a pineapple cup on a 3×3 bookshelf and tells you **which shelf cell** it is in.
 
+![Sample images — cup in each of 9 cells](docs/grid_overview.png)
+
 ---
 
 ## What does this system do?
