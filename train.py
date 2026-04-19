@@ -11,9 +11,14 @@ Prerequisites:
 """
 
 import argparse
+import os
 from pathlib import Path
 
 from ultralytics import YOLO
+
+# Resolve project root so YOLO always writes to <project_root>/runs/train
+# regardless of which directory the script is invoked from.
+PROJECT_ROOT = Path(__file__).parent.resolve()
 
 
 def main():
@@ -25,18 +30,22 @@ def main():
     parser.add_argument("--imgsz", type=int, default=640)
     parser.add_argument("--lr0", type=float, default=0.001)
     parser.add_argument("--patience", type=int, default=20, help="Early stopping patience (epochs)")
-    parser.add_argument("--project", default="runs/train")
+    parser.add_argument("--project", default=str(PROJECT_ROOT / "runs" / "train"))
     parser.add_argument("--name", default="pineapple_cup_v1")
     parser.add_argument("--device", default="", help="cuda device or 'cpu' (auto-detect if empty)")
     args = parser.parse_args()
 
-    data_yaml = Path(args.data)
+    # Resolve paths relative to project root
+    data_yaml = PROJECT_ROOT / args.data
     if not data_yaml.exists():
         raise FileNotFoundError(f"dataset.yaml not found at {data_yaml}. Run augment.py first.")
 
-    dataset_dir = Path("dataset")
+    dataset_dir = PROJECT_ROOT / "dataset"
     if not (dataset_dir / "images" / "train").exists():
         raise FileNotFoundError("dataset/images/train/ not found. Run augment.py first.")
+
+    # Change to project root so all relative paths inside YOLO resolve correctly
+    os.chdir(PROJECT_ROOT)
 
     model = YOLO(args.model)
 
