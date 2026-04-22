@@ -1,7 +1,7 @@
 [project]
 name = "poc-picking-object-v2"
 version = "0.1.0"
-description = "POC: Pineapple cup detection and 3x3 grid localization using YOLOv8"
+description = "POC: Bowl detection and rack grid localization using YOLOv8"
 requires-python = ">=3.10, <3.14"
 dependencies = [
     "ultralytics>=8.0.0",
